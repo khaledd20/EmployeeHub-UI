@@ -1,0 +1,9 @@
+<div *ngIf="employee" class="container">
+    <h2>Employee Profile</h2>
+    <p><strong>ID:</strong> {{ employee.employeeID }}</p>
+    <p><strong>Name:</strong> {{ employee.firstName }} {{ employee.lastName }}</p>
+    <p><strong>Department:</strong> {{ employee.department?.departmentName }}</p>
+    <p><strong>Role:</strong> {{ employee.role?.roleName }}</p>
+    <p><strong>Email:</strong> {{ employee.email }}</p>
+  </div>
+  
