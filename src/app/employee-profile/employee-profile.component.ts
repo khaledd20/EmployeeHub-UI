@@ -5,7 +5,7 @@ import { EmployeeService } from '../services/employee.service';
 @Component({
   selector: 'app-employee-profile',
   templateUrl: './employee-profile.component.html',
-  styleUrls: ['./employee-profile.component.scss'],
+  styleUrls: ['./employee-profile.component.scss']
 })
 export class EmployeeProfileComponent implements OnInit {
   employee: any;
@@ -16,13 +16,10 @@ export class EmployeeProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.loadEmployee(id);
-  }
-
-  loadEmployee(id: number): void {
-    this.employeeService.getEmployeeById(id).subscribe((data) => {
-      this.employee = data;
+    const id = this.route.snapshot.params['id'];
+    this.employeeService.getEmployeeById(id).subscribe({
+      next: (data) => (this.employee = data),
+      error: (err) => console.error(err),
     });
   }
 }

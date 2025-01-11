@@ -8,6 +8,7 @@ import { LeaveTrackerComponent } from './leave-tracker/leave-tracker.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { FormsModule } from '@angular/forms';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     EmployeeProfileComponent,
     LeaveTrackerComponent,
     AddEmployeeComponent,
+    EditEmployeeComponent
   ],
   imports: [
     BrowserModule,

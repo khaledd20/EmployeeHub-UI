@@ -19,6 +19,18 @@ export class EmployeeService {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
 
+  getDepartments(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.APIBaseURL}/employees/departments`);
+  }
+  
+  updateEmployee(id: number, employee: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/${id}`, employee);
+  }
+
+  getRoles(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.APIBaseURL}/employees/roles`);
+  }
+  
   addEmployee(employee: any): Observable<any> {
     return this.http.post<any>(this.baseUrl, employee);
   }

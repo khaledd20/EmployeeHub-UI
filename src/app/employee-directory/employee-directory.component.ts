@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-directory',
@@ -9,7 +10,7 @@ import { EmployeeService } from '../services/employee.service';
 export class EmployeeDirectoryComponent implements OnInit {
   employees: any[] = []; // To store employee data
 
-  constructor(private employeeService: EmployeeService) {}
+  constructor(private employeeService: EmployeeService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadEmployees();
@@ -25,5 +26,9 @@ export class EmployeeDirectoryComponent implements OnInit {
         console.error('Error fetching employees:', error); // Handle errors
       }
     );
+  }
+
+  editEmployee(id: number): void {
+    this.router.navigate(['/edit-employee', id]);
   }
 }

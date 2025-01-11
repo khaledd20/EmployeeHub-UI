@@ -1,0 +1,23 @@
+<div class="container" *ngIf="employee">
+    <h2>Edit Employee</h2>
+    <form (ngSubmit)="updateEmployee()">
+      <input type="text" [(ngModel)]="employee.firstName" placeholder="First Name" name="firstName" required />
+      <input type="text" [(ngModel)]="employee.lastName" placeholder="Last Name" name="lastName" required />
+      <input type="email" [(ngModel)]="employee.email" placeholder="Email" name="email" required />
+      <input type="text" [(ngModel)]="employee.phoneNumber" placeholder="Phone Number" name="phoneNumber" />
+      <input type="text" [(ngModel)]="employee.address" placeholder="Address" name="address" />
+      
+      <select [(ngModel)]="employee.departmentID" name="departmentID" required>
+        <option *ngFor="let dept of departments" [value]="dept.departmentID">{{ dept.departmentName }}</option>
+      </select>
+  
+      <select [(ngModel)]="employee.roleID" name="roleID" required>
+        <option *ngFor="let role of roles" [value]="role.roleID">{{ role.roleName }}</option>
+      </select>
+  
+      <input type="file" (change)="onFileSelected($event)" />
+      
+      <button type="submit">Update Employee</button>
+    </form>
+  </div>
+  

@@ -1,12 +1,33 @@
 <div class="container">
-    <h2>Add Employee</h2>
-    <form (ngSubmit)="addEmployee()">
-      <input type="text" [(ngModel)]="employee.firstName" placeholder="First Name" name="firstName" />
-      <input type="text" [(ngModel)]="employee.lastName" placeholder="Last Name" name="lastName" />
-      <input type="number" [(ngModel)]="employee.departmentID" placeholder="Department ID" name="departmentID" />
-      <input type="number" [(ngModel)]="employee.roleID" placeholder="Role ID" name="roleID" />
-      <input type="email" [(ngModel)]="employee.email" placeholder="Email" name="email" />
-      <button type="submit">Add Employee</button>
-    </form>
-  </div>
-  
+  <h2>Add Employee</h2>
+  <form (ngSubmit)="addEmployee()" enctype="multipart/form-data">
+    <input type="text" [(ngModel)]="employee.firstName" placeholder="First Name" name="firstName" required />
+    <input type="text" [(ngModel)]="employee.lastName" placeholder="Last Name" name="lastName" required />
+    <input type="text" [(ngModel)]="employee.phoneNumber" placeholder="Phone Number" name="phoneNumber" required />
+    <input type="text" [(ngModel)]="employee.address" placeholder="Address" name="address" required />
+
+    <select [(ngModel)]="employee.departmentID" name="departmentID" required>
+      <option [value]="null" disabled selected>Select Department</option>
+      <option *ngFor="let department of departments" [value]="department.departmentID">
+        {{ department.departmentName }}
+      </option>
+    </select>
+
+    <select [(ngModel)]="employee.roleID" name="roleID" required>
+      <option [value]="null" disabled selected>Select Role</option>
+      <option *ngFor="let role of roles" [value]="role.roleID">
+        {{ role.roleName }}
+      </option>
+    </select>
+
+    <input type="email" [(ngModel)]="employee.email" placeholder="Email" name="email" required />
+
+    <!-- Photo Upload -->
+    <input type="file" (change)="onPhotoSelected($event)" accept="image/*" />
+
+    <button type="submit">Add Employee</button>
+  </form>
+
+  <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+</div>

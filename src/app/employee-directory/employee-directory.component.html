@@ -7,6 +7,7 @@
         <th>Name</th>
         <th>Department</th>
         <th>Role</th>
+        <th>Actions</th> <!-- Added Actions column -->
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,12 @@
         <td>{{ employee.firstName }} {{ employee.lastName }}</td>
         <td>{{ employee.department?.departmentName || 'N/A' }}</td>
         <td>{{ employee.role?.roleName || 'N/A' }}</td>
+        <td>
+          <!-- View button to navigate to the Employee Profile -->
+          <button [routerLink]="['/profile', employee.employeeID]">View</button>
+          <button (click)="editEmployee(employee.employeeID)">Edit</button>
+
+        </td>
       </tr>
     </tbody>
   </table>

@@ -1,9 +1,14 @@
-<div *ngIf="employee" class="container">
-    <h2>Employee Profile</h2>
-    <p><strong>ID:</strong> {{ employee.employeeID }}</p>
-    <p><strong>Name:</strong> {{ employee.firstName }} {{ employee.lastName }}</p>
-    <p><strong>Department:</strong> {{ employee.department?.departmentName }}</p>
-    <p><strong>Role:</strong> {{ employee.role?.roleName }}</p>
-    <p><strong>Email:</strong> {{ employee.email }}</p>
+<div class="profile-container" *ngIf="employee">
+  <!-- Display the photo -->
+  <div class="profile-photo">
+    <img [src]="employee.photo || 'assets/default-profile.png'" alt="{{ employee.firstName }}'s Photo" />
   </div>
   
+  <!-- Display employee details -->
+  <h2>{{ employee.firstName }} {{ employee.lastName }}</h2>
+  <p><strong>Email:</strong> {{ employee.email }}</p>
+  <p><strong>Phone:</strong> {{ employee.phoneNumber }}</p>
+  <p><strong>Address:</strong> {{ employee.address }}</p>
+  <p><strong>Department:</strong> {{ employee.department?.departmentName || 'N/A' }}</p>
+  <p><strong>Role:</strong> {{ employee.role?.roleName || 'N/A' }}</p>
+</div>
