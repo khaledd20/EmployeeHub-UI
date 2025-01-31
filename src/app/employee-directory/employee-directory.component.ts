@@ -31,4 +31,24 @@ export class EmployeeDirectoryComponent implements OnInit {
   editEmployee(id: number): void {
     this.router.navigate(['/edit-employee', id]);
   }
+
+  confirmDelete(employeeId: number) {
+    const confirmed = confirm('Are you sure you want to delete this employee?');
+    if (confirmed) {
+      this.deleteEmployee(employeeId);
+    }
+  }
+
+  deleteEmployee(employeeId: number) {
+    this.employeeService.deleteEmployee(employeeId).subscribe({
+      next: () => {
+        this.employees = this.employees.filter(emp => emp.id !== employeeId);
+        alert('Employee deleted successfully');
+      },
+      error: () => {
+        alert('Failed to delete employee');
+      },
+    });
+  }
+
 }

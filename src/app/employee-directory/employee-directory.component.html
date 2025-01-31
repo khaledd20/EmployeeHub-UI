@@ -20,6 +20,7 @@
           <!-- View button to navigate to the Employee Profile -->
           <button [routerLink]="['/profile', employee.employeeID]">View</button>
           <button (click)="editEmployee(employee.employeeID)">Edit</button>
+          <button (click)="confirmDelete(employee.employeeID)">Delete </button>
 
         </td>
       </tr>

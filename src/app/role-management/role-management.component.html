@@ -1,0 +1,29 @@
+<div class="container">
+    <h2>Role Management</h2>
+    <form (ngSubmit)="addRole()">
+      <input
+        type="text"
+        [(ngModel)]="newRole.RoleName"
+        name="RoleName"
+        placeholder="Role Name"
+        required
+      />
+      <button type="submit">Add Role</button>
+    </form>
+    <table>
+      <tr>
+        <th>Role ID</th>
+        <th>Role Name</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let role of roles">
+        <td>{{ role.RoleID }}</td>
+        <td>{{ role.RoleName }}</td>
+        <td>
+          <button (click)="editRole(role)">Edit</button>
+          <button (click)="deleteRole(role.RoleID)">Delete</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  

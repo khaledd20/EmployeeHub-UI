@@ -1,27 +1,61 @@
 /* Navigation Bar Styles */
 .navbar {
-    background-color: #007bff; /* Blue background */
-    padding: 1rem; /* Add padding to the navbar */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    display: flex; /* Align items horizontally */
-    justify-content: center; /* Center the links */
-    align-items: center; /* Vertically align the links */
-  }
-  
-  .navbar a {
-    color: #ffffff; /* White text for links */
-    text-decoration: none; /* Remove underline */
-    margin: 0 1rem; /* Add spacing between links */
-    font-weight: bold; /* Make links bold */
-    transition: color 0.3s ease; /* Smooth transition on hover */
-  }
-  
-  .navbar a:hover {
-    color: #ffc107; /* Yellow hover effect */
-  }
-  
-  .navbar a.active {
-    color: #ffc107; /* Highlight active link */
-    border-bottom: 2px solid #ffc107; /* Add underline to active link */
-  }
-  
+  background-color: #007bff; /* Blue background */
+  padding: 1rem; /* Add padding to the navbar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex; /* Align items horizontally */
+  justify-content: space-between; /* Space between links and buttons */
+  align-items: center; /* Vertically align the links */
+}
+
+/* Logo or Brand Section */
+.navbar .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Navigation Links */
+.navbar a {
+  color: #ffffff; /* White text for links */
+  text-decoration: none; /* Remove underline */
+  margin: 0 1rem; /* Add spacing between links */
+  font-weight: bold; /* Make links bold */
+  transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Hover effect for links */
+.navbar a:hover {
+  color: #ffc107; /* Yellow hover effect */
+}
+
+/* Highlight active link */
+.navbar a.active {
+  color: #ffc107; /* Highlight active link */
+  border-bottom: 2px solid #ffc107; /* Add underline to active link */
+}
+
+/* Login/Logout Button Styles */
+.navbar button {
+  background-color: #ffc107; /* Yellow background */
+  border: none;
+  color: #333; /* Dark text */
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar button:hover {
+  background-color: #ffca2c; /* Lighter yellow on hover */
+}
+
+/* Show/Hide Links Based on Login */
+.nav-links {
+  display: flex;
+}
+
+.nav-links.hidden {
+  display: none; /* Hide links when not logged in */
+}

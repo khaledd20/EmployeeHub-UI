@@ -1,0 +1,40 @@
+<div class="container">
+    <h2>Department Management</h2>
+    <form (ngSubmit)="addDepartment()">
+      <input
+        type="text"
+        [(ngModel)]="newDepartment.DepartmentName"
+        name="DepartmentName"
+        placeholder="Department Name"
+        required
+      />
+      <input
+        type="number"
+        [(ngModel)]="newDepartment.ManagerID"
+        name="ManagerID"
+        placeholder="Manager ID"
+        required
+      />
+      <button type="submit">Add Department</button>
+    </form>
+    <table>
+      <tr>
+        <th>Department ID</th>
+        <th>Department Name</th>
+        <th>Manager ID</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let department of departments">
+        <td>{{ department.DepartmentID }}</td>
+        <td>{{ department.DepartmentName }}</td>
+        <td>{{ department.ManagerID }}</td>
+        <td>
+          <button (click)="editDepartment(department)">Edit</button>
+          <button (click)="deleteDepartment(department.DepartmentID)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  

@@ -34,4 +34,8 @@ export class EmployeeService {
   addEmployee(employee: any): Observable<any> {
     return this.http.post<any>(this.baseUrl, employee);
   }
+
+  deleteEmployee(employeeId: number): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${employeeId}`);
+  }
 }
