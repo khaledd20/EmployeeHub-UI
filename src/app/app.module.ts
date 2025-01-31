@@ -11,7 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { LoginComponent } from './login/login.component';
 import { DepartmentManagementComponent } from './department-management/department-management.component';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,9 @@ import { DepartmentManagementComponent } from './department-management/departmen
     AddEmployeeComponent,
     EditEmployeeComponent,
     LoginComponent,
-    DepartmentManagementComponent
+    DepartmentManagementComponent,
+    MatDialogModule,
+    MatSnackBarModule,
   ],
   imports: [
     BrowserModule,
