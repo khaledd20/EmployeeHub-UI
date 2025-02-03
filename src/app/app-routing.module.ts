@@ -8,6 +8,7 @@ import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { DepartmentManagementComponent } from './department-management/department-management.component';
+import { RoleManagementComponent } from './role-management/role-management.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -17,7 +18,8 @@ export const routes: Routes = [
   { path: 'leave-tracker', component: LeaveTrackerComponent, canActivate: [AuthGuard] },
   { path: 'add-employee', component: AddEmployeeComponent, canActivate: [AuthGuard] },
   { path: 'edit-employee/:id', component: EditEmployeeComponent, canActivate: [AuthGuard] },
-  { path: '/departments', component: DepartmentManagementComponent, canActivate: [AuthGuard] },
+  { path: 'departments', component: DepartmentManagementComponent, canActivate: [AuthGuard] },
+  { path: 'roles', component: RoleManagementComponent, canActivate: [AuthGuard] },
 
   { path: '**', redirectTo: '/login' }  // Redirect any unknown route to login
 

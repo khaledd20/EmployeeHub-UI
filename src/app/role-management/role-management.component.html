@@ -17,11 +17,11 @@
         <th>Actions</th>
       </tr>
       <tr *ngFor="let role of roles">
-        <td>{{ role.RoleID }}</td>
-        <td>{{ role.RoleName }}</td>
+        <td>{{ role.roleID }}</td>
+        <td>{{ role.roleName }}</td>
         <td>
           <button (click)="editRole(role)">Edit</button>
-          <button (click)="deleteRole(role.RoleID)">Delete</button>
+          <button (click)="deleteRole(role.roleID)">Delete</button>
         </td>
       </tr>
     </table>

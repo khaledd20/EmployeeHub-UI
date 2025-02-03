@@ -27,6 +27,8 @@ export class DepartmentManagementComponent  implements OnInit {
   loadDepartments(): void {
     this.departmentService.getDepartments().subscribe((data) => {
       this.departments = data;
+      console.log('departments loaded:', data);  // Log the data to verify it's correct
+
     });
   }
 

@@ -13,6 +13,9 @@ import { LoginComponent } from './login/login.component';
 import { DepartmentManagementComponent } from './department-management/department-management.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RoleManagementComponent } from './role-management/role-management.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,14 +26,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     EditEmployeeComponent,
     LoginComponent,
     DepartmentManagementComponent,
-    MatDialogModule,
-    MatSnackBarModule,
+    RoleManagementComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    MatSnackBarModule,
+    NoopAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

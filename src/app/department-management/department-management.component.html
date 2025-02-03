@@ -25,12 +25,12 @@
         <th>Actions</th>
       </tr>
       <tr *ngFor="let department of departments">
-        <td>{{ department.DepartmentID }}</td>
-        <td>{{ department.DepartmentName }}</td>
-        <td>{{ department.ManagerID }}</td>
+        <td>{{ department.departmentID }}</td>
+        <td>{{ department.departmentName }}</td>
+        <td>{{ department.managerID }}</td>
         <td>
           <button (click)="editDepartment(department)">Edit</button>
-          <button (click)="deleteDepartment(department.DepartmentID)">
+          <button (click)="deleteDepartment(department.departmentID)">
             Delete
           </button>
         </td>
