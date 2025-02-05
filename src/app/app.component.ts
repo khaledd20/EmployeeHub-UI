@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +8,25 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent implements OnInit {
   isLoggedIn = false;
+  userRole: string | null = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    // Check if the user is logged in when the app loads
-    this.isLoggedIn = this.authService.isLoggedIn();
+    this.checkUserLoginStatus();
+  }
+
+  checkUserLoginStatus(): void {
+    const token = localStorage.getItem('token');
+    this.isLoggedIn = !!token;
+    this.userRole = localStorage.getItem('role'); // Retrieve role from storage
   }
 
   logout(): void {
-    this.authService.logout();
+    localStorage.removeItem('token');
+    localStorage.removeItem('role');
+    localStorage.removeItem('employeeId');
     this.isLoggedIn = false;
+    this.router.navigate(['/login']);
   }
 }

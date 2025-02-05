@@ -19,13 +19,14 @@ export class LoginComponent {
       next: (response) => {
         localStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role);
+        localStorage.setItem('employeeId', response.employeeId);
 
-        if (response.role === 'Admin') {
-          this.router.navigate(['/employees']);
+        if (response.role === 'Manager') {
+          this.router.navigate(['/leave-managment']);
         } else if (response.role === 'HR') {
-          this.router.navigate(['/team']);
+          this.router.navigate(['/leave-managment']);
         } else if (response.role === 'Employee') {
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/employee-leave-tracker']);
         }
       },
       error: () => {

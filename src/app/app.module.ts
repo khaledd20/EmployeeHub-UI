@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeDirectoryComponent } from './employee-directory/employee-directory.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
-import { LeaveTrackerComponent } from './leave-tracker/leave-tracker.component';
+import { LeaveTrackerComponent } from './old-leave-tracker/leave-tracker.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RoleManagementComponent } from './role-management/role-management.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { EmployeeLeaveTrackerComponent } from './employee-leave-tracker/employee-leave-tracker.component';
+import { AdminLeaveManagementComponent } from './leave-management/leave-management.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     EditEmployeeComponent,
     LoginComponent,
     DepartmentManagementComponent,
-    RoleManagementComponent
+    RoleManagementComponent,
+    EmployeeLeaveTrackerComponent,
+    AdminLeaveManagementComponent
   ],
   imports: [
     BrowserModule,

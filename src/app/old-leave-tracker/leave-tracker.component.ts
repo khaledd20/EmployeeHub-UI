@@ -10,10 +10,10 @@ export class LeaveTrackerComponent implements OnInit {
   leaveRequests: any[] = [];
   
   newLeaveRequest = { // Define the structure of a leave request
-    employeeID: null, // Updated to match API
+    employeeId: '', // Initialize employeeId as a string
     startDate: '',
     endDate: '',
-    status: 'Pending'
+    status: 'Pending' // User can set status if needed, otherwise it can default to 'Pending' in backend
   };
 
   constructor(private leaveRequestService: LeaveRequestService) {}
@@ -25,7 +25,7 @@ export class LeaveTrackerComponent implements OnInit {
   loadLeaveRequests(): void {
     this.leaveRequestService.getLeaveRequests().subscribe({
       next: (data) => {
-        console.log('Fetched Leave Requests:', data); // Debugging log
+        console.log('Fetched Leave Requests:', data);
         this.leaveRequests = data;
       },
       error: (error) => {
@@ -35,27 +35,29 @@ export class LeaveTrackerComponent implements OnInit {
   }
 
   submitLeaveRequest(): void {
-    const payload = {
-        employeeID: this.newLeaveRequest.employeeID,
-        managerID: 2, // Hardcoded or select from dropdown
-        startDate: this.newLeaveRequest.startDate,
-        endDate: this.newLeaveRequest.endDate,
-        status: this.newLeaveRequest.status
-    };
+  // Retrieve the employeeId from storage (this should be set during the login process)
+  this.newLeaveRequest.employeeId = localStorage.getItem('employeeId') || '';
 
-    this.leaveRequestService.createLeaveRequest(payload).subscribe({
-        next: (data) => {
-            console.log("Added successfully", data);
-            this.leaveRequests.push(data);
-            alert("Leave request added!");
-        },
-        error: (error) => {
-            console.error("Error:", error);
-            alert("Error adding leave request: " + error.error);
-        }
-    });
+  if (!this.newLeaveRequest.employeeId) {
+    alert('Employee ID is not available. Please log in again.');
+    return;
+  }
+
+  this.leaveRequestService.createLeaveRequest(this.newLeaveRequest).subscribe({
+    next: (data) => {
+      console.log("Leave request added successfully", data);
+      this.leaveRequests.push(data); // Update the list with the new request
+      alert("Leave request added successfully!");
+    },
+    error: (error) => {
+      console.error("Error adding leave request:", error);
+      alert("Error adding leave request: " + (error.error || 'Unknown Error'));
+    }
+  });
 }
 
+  
+  
   deleteLeaveRequest(leaveRequestID: number): void {
     this.leaveRequestService.deleteLeaveRequest(leaveRequestID).subscribe({
       next: () => {

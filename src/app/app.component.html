@@ -3,11 +3,27 @@
 
   <!-- Links visible only when logged in -->
   <div class="nav-links" [ngClass]="{ 'hidden': !isLoggedIn }">
-    <a routerLink="/employees" routerLinkActive="active">Employee Directory</a>
-    <a routerLink="/leave-tracker" routerLinkActive="active">Leave Tracker</a>
-    <a routerLink="/add-employee" routerLinkActive="active">Add Employee</a>
-    <a routerLink="/departments" routerLinkActive="active">Departments</a>
-    <a routerLink="/roles" routerLinkActive="active">Roles</a>
+
+    <!-- Everyone can access Employee Directory -->
+    <a *ngIf="userRole === 'HR' || userRole === 'Manager'" routerLink="/employees" routerLinkActive="active">
+      Employee Directory</a>
+
+    <!-- Employees can access Leave Tracker -->
+    <a *ngIf="userRole === 'Employee'" routerLink="/employee-leave-tracker" routerLinkActive="active">My Leave Requests</a>
+
+    <!-- HR and Manager can access Leave Management -->
+    <a *ngIf="userRole === 'HR' || userRole === 'Manager'" routerLink="/leave-managment" routerLinkActive="active">
+      Manage Leave Requests
+    </a>
+
+    <!-- HR can add employees -->
+    <a *ngIf="userRole === 'HR'" routerLink="/add-employee" routerLinkActive="active">Add Employee</a>
+
+    <!-- Manager can see Departments -->
+    <a *ngIf="userRole === 'Manager'" routerLink="/departments" routerLinkActive="active">Departments</a>
+
+    <!-- Only HR can manage roles -->
+    <a *ngIf="userRole === 'HR'" routerLink="/roles" routerLinkActive="active">Roles</a>
 
   </div>
 
